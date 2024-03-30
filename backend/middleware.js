@@ -3,10 +3,13 @@ const {createTodoSchema,updateTodoSchema} = require('./validation.js');
 
 
 const validateCreate = (req,res,next) =>{
-  if(!createTodoSchema.safeParse.success){
+  const payload=req.body;
+  const parsePayload = createTodoSchema.safeParse(payload);
+  if(!parsePayload.success){
     res.status(411).json({
       msg:"You have sent wrong inputs"
     })
+    return;
   }
   else{
     next();
@@ -15,10 +18,13 @@ const validateCreate = (req,res,next) =>{
 }
 
 const validateUpdate = (req,res,next) =>{
-  if(!updateTodoSchema.safeParse.success){
+  const payload=req.body;
+  const parsePayload = updateTodoSchema.safeParse(payload);
+  if(!parsePayload.success){
     res.status(411).json({
       msg:"You have sent wrong inputs"
     })
+    return;
   }
   else{
     next();
