@@ -25,14 +25,14 @@ app.post('/createTodos',validateCreate,async function(req,res){
 app.get('/listTodos',async function(req,res){
         const listTodos = await todo.find({});
 
-        res.json({
+        res.status(200).json({
           listTodos
         })
      
 })
 
 app.put('/completed',validateUpdate,async function(req,res){
-  await todo.update({_id:request.body.id},
+  await todo.findOneAndUpdate({_id:req.body.id},
     {completed:true})
 
 

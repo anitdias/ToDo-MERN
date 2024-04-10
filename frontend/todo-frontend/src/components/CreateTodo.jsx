@@ -17,7 +17,7 @@ export function CreateTodo(){
       placeholder="Enter Title"
       onChange={function(e){
         const value = e.target.value;
-        setTitle(e.target.value);
+        setTitle(value);
 
       }}></input><br></br><br></br>
     <input style={{
@@ -27,7 +27,7 @@ export function CreateTodo(){
       placeholder="Enter Description" 
       onChange={function(e){
         const value = e.target.value;
-        setDescription(e.target.value);
+        setDescription(value);
 
       }}></input><br></br><br></br>
     <button onClick={function(){
